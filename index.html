@@ -17,10 +17,10 @@
             theme: {
                 extend: {
                     colors: {
-                        primary: '#f59e0b',   /* لون البطاطس الذهبي */
-                        secondary: '#d97706', /* كهرماني داكن */
-                        accent: '#10b981',    /* أخضر يرمز للمزارع والطبيعة */
-                        dark: '#0f172a'       /* كحلي داكن راقي */
+                        primary: '#f59e0b',
+                        secondary: '#d97706',
+                        accent: '#10b981',
+                        dark: '#0f172a'
                     },
                     fontFamily: {
                         sans: ['Cairo', 'sans-serif'],
@@ -36,8 +36,8 @@
     <div class="bg-dark text-gray-300 text-xs py-2 px-4 border-b border-gray-800">
         <div class="container mx-auto flex flex-col md:flex-row justify-between items-center gap-2">
             <div class="flex items-center gap-4">
-                <span><i class="fa-solid fa-phone text-primary ml-1"></i> +20 100 000 0000</span>
-                <span><i class="fa-solid fa-envelope text-primary ml-1"></i> export@goldenfries.com</span>
+                <span><i class="fa-solid fa-phone text-primary ml-1"></i> <span id="top-phone">...</span></span>
+                <span><i class="fa-solid fa-envelope text-primary ml-1"></i> <span id="top-email">...</span></span>
             </div>
             <div class="flex items-center gap-3">
                 <span class="text-accent font-semibold"><i class="fa-solid fa-certificate ml-1"></i> معتمدون لتصدير الأسواق الأوروبية والخليجية</span>
@@ -50,7 +50,6 @@
     <!-- شريط التنقل (Navbar) -->
     <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md shadow-sm">
         <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-            <!-- الشعار -->
             <a href="#" class="flex items-center gap-2 text-2xl font-black text-dark">
                 <span class="w-10 h-10 rounded-xl bg-gradient-to-tr from-secondary to-primary text-white flex items-center justify-center shadow-md">
                     <i class="fa-solid fa-fire-burner"></i>
@@ -58,7 +57,6 @@
                 <span>جولدن<span class="text-primary">فرايز</span></span>
             </a>
 
-            <!-- القائمة للشاشات الكبيرة -->
             <nav class="hidden md:flex items-center gap-8 font-semibold text-gray-700">
                 <a href="#home" class="hover:text-primary transition">الرئيسية</a>
                 <a href="#about" class="hover:text-primary transition">عن المصنع</a>
@@ -67,20 +65,17 @@
                 <a href="#contact" class="hover:text-primary transition">تواصل معنا</a>
             </nav>
 
-            <!-- زر طلب عرض السعر -->
             <div class="hidden md:block">
                 <a href="#contact" class="bg-primary hover:bg-secondary text-white px-5 py-2.5 rounded-full font-bold shadow-md transition transform hover:-translate-y-0.5">
                     طلب عرض سعر (B2B)
                 </a>
             </div>
 
-            <!-- زر الموبايل -->
             <button id="mobile-menu-btn" class="md:hidden text-2xl text-dark focus:outline-none">
                 <i class="fa-solid fa-bars"></i>
             </button>
         </div>
 
-        <!-- القائمة المنسدلة للشاشات الصغيرة -->
         <div id="mobile-menu" class="hidden md:hidden bg-white border-t px-4 py-4 space-y-3">
             <a href="#home" class="block font-medium text-gray-700 hover:text-primary">الرئيسية</a>
             <a href="#about" class="block font-medium text-gray-700 hover:text-primary">عن المصنع</a>
@@ -125,29 +120,14 @@
         </div>
     </section>
 
-    <!-- الأرقام والإحصائيات السريعة (Stats) -->
+    <!-- الأرقام والإحصائيات (تأتي ديناميكياً من JSON) -->
     <section class="bg-dark text-white py-12">
-        <div class="container mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            <div class="space-y-1">
-                <p class="text-3xl lg:text-4xl font-extrabold text-primary">+50,000</p>
-                <p class="text-sm text-gray-400">طن طاقة إنتاجية سنوياً</p>
-            </div>
-            <div class="space-y-1">
-                <p class="text-3xl lg:text-4xl font-extrabold text-primary">+25</p>
-                <p class="text-sm text-gray-400">دولة يتم التصدير إليها</p>
-            </div>
-            <div class="space-y-1">
-                <p class="text-3xl lg:text-4xl font-extrabold text-primary">100%</p>
-                <p class="text-sm text-gray-400">محصول طبيعي بدون تعديل وراثي</p>
-            </div>
-            <div class="space-y-1">
-                <p class="text-3xl lg:text-4xl font-extrabold text-primary">4</p>
-                <p class="text-sm text-gray-400">شهادات جودة واعتماد دولي</p>
-            </div>
+        <div class="container mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-8 text-center" id="stats-container">
+            <!-- سيتم بناؤها تلقائياً بالـ JavaScript -->
         </div>
     </section>
 
-    <!-- نبذة عن المصنع (About) -->
+    <!-- نبذة عن المصنع -->
     <section id="about" class="py-20 bg-white">
         <div class="container mx-auto px-4">
             <div class="flex flex-col lg:flex-row items-center gap-12">
@@ -160,7 +140,7 @@
                     <span class="text-secondary font-bold text-sm uppercase tracking-wider">من نحن</span>
                     <h2 class="text-3xl font-extrabold text-dark leading-tight">تكنولوجيا أوروبية متقدمة في معالجة وتجميد البطاطس</h2>
                     <p class="text-gray-600 leading-relaxed">
-                        نمتلك أحدث خطوط الإنتاج والفرز الإلكتروني بالليزر لاختيار أفضل حبات البطاطس من مزارعنا الخاضعة لأعلى معايير الإشراف الزراعي. نحرص على معالجة البطاطس وقليها المبدئي بأجود أنواع الزيوت النباتية وتجميدها عبر تقنية <strong>IQF</strong> لضمان الحفاظ على اللون الذهبي والقرمشة الاستثنائية عند القلي النهائي.
+                        نمتلك أحدث خطوط الإنتاج والفرز الإلكتروني بالليزر لاختيار أفضل حبات البطاطس من مزارعنا الخاضعة لأعلى معايير الإشراف الزراعي. نحرص على معالجة البطاطس وقليها المبدئي بأجود أنواع الزيوت النباتية وتجميدها عبر تقنية <strong>IQF</strong> لضمان الحفاظ على اللون الذهبي والقرمشة الاستثنائية.
                     </p>
                     <ul class="space-y-3 font-semibold text-gray-700">
                         <li class="flex items-center gap-3">
@@ -169,7 +149,7 @@
                         </li>
                         <li class="flex items-center gap-3">
                             <i class="fa-solid fa-circle-check text-accent"></i>
-                            ثبات في الطول ونسبة المواد الصلبة لتقليل استهلاك الزيت بالمطاعم.
+                            ثبات في الطول ونسبة المواد الصلبة لتقليل استهلاك الزيت.
                         </li>
                         <li class="flex items-center gap-3">
                             <i class="fa-solid fa-circle-check text-accent"></i>
@@ -181,7 +161,7 @@
         </div>
     </section>
 
-    <!-- المنتجات (Products) - [هنا يتم جلب المنتجات ديناميكياً من الـ API] -->
+    <!-- المنتجات (تأتي ديناميكياً من JSON) -->
     <section id="products" class="py-20 bg-gray-50">
         <div class="container mx-auto px-4">
             <div class="text-center max-w-2xl mx-auto mb-16 space-y-3">
@@ -190,61 +170,16 @@
                 <p class="text-gray-600">نوفر جميع مقاسات التقطيع العالمية التي تلبي احتياجات المطاعم وقطاع التجزئة.</p>
             </div>
 
-            <!-- مؤشر التحميل أثناء انتظار الـ API -->
             <div id="loading-spinner" class="flex flex-col items-center justify-center py-12">
                 <i class="fa-solid fa-circle-notch fa-spin text-4xl text-primary mb-3"></i>
-                <p class="text-gray-500 font-semibold text-sm">جاري تحميل قائمة المنتجات...</p>
+                <p class="text-gray-500 font-semibold text-sm">جاري جلب المنتجات من السيرفر...</p>
             </div>
 
-            <!-- رسالة الخطأ إن تعذر الاتصال -->
-            <div id="error-message" class="hidden text-center py-10 bg-red-50 text-red-600 rounded-2xl max-w-md mx-auto">
-                <i class="fa-solid fa-triangle-exclamation text-3xl mb-2"></i>
-                <p class="font-bold">عذراً، تعذر جلب المنتجات حالياً!</p>
-            </div>
-
-            <!-- الحاوية التي ستنزل فيها الكروت تلقائياً -->
             <div id="products-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"></div>
         </div>
     </section>
 
-    <!-- الجودة والتصدير (Quality & Certifications) -->
-    <section id="quality" class="py-20 bg-white">
-        <div class="container mx-auto px-4">
-            <div class="bg-gradient-to-r from-dark to-slate-800 text-white rounded-3xl p-8 md:p-14 shadow-2xl">
-                <div class="flex flex-col lg:flex-row items-center justify-between gap-8">
-                    <div class="space-y-4 max-w-xl">
-                        <span class="bg-accent/20 text-accent text-xs font-bold px-3 py-1 rounded-full uppercase">شهادات الاعتماد الدولية</span>
-                        <h2 class="text-3xl font-extrabold leading-tight">ملتزمون بأعلى معايير سلامة الأغذية والتصدير البحري</h2>
-                        <p class="text-gray-300 text-sm leading-relaxed">
-                            تخضع منتجاتنا لفحوصات معملية صارمة لكل شحنة لضمان استيفاء المعايير الخاصة بالدول المستوردة، مع شحن مبرد في حاويات Reefer تضمن وصول الشحنة بحالتها المثالية.
-                        </p>
-                    </div>
-
-                    <!-- أيقونات الشهادات -->
-                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 w-full lg:w-auto">
-                        <div class="bg-white/10 backdrop-blur-md p-4 rounded-xl text-center border border-white/10">
-                            <i class="fa-solid fa-stamp text-primary text-3xl mb-2"></i>
-                            <p class="font-bold text-sm">ISO 22000</p>
-                        </div>
-                        <div class="bg-white/10 backdrop-blur-md p-4 rounded-xl text-center border border-white/10">
-                            <i class="fa-solid fa-shield-halved text-primary text-3xl mb-2"></i>
-                            <p class="font-bold text-sm">HACCP</p>
-                        </div>
-                        <div class="bg-white/10 backdrop-blur-md p-4 rounded-xl text-center border border-white/10">
-                            <i class="fa-solid fa-moon text-primary text-3xl mb-2"></i>
-                            <p class="font-bold text-sm">حلال (HALAL)</p>
-                        </div>
-                        <div class="bg-white/10 backdrop-blur-md p-4 rounded-xl text-center border border-white/10">
-                            <i class="fa-solid fa-leaf text-primary text-3xl mb-2"></i>
-                            <p class="font-bold text-sm">Global G.A.P</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- قسم تواصل معنا -->
+    <!-- قسم تواصل معنا المباشر (الأرقام والروابط ديناميكية) -->
     <section id="contact" class="py-20 bg-gray-50">
         <div class="container mx-auto px-4 max-w-6xl">
             <div class="text-center max-w-2xl mx-auto mb-16 space-y-3">
@@ -255,7 +190,6 @@
                 <p class="text-gray-600 text-sm">يسعدنا استقبال استفساراتكم وطلبات عروض الأسعار والتصدير عبر القنوات الرسمية التالية:</p>
             </div>
 
-            <!-- بطاقات التواصل -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
                 <!-- 1. قسم التصدير والمبيعات الدولية -->
                 <div class="bg-white rounded-3xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 flex flex-col justify-between">
@@ -266,32 +200,32 @@
                         <div>
                             <span class="text-xs text-amber-600 font-bold bg-amber-50 px-2 py-0.5 rounded">B2B & Export</span>
                             <h3 class="text-xl font-bold text-dark mt-1">قسم التصدير والمبيعات الدولية</h3>
-                            <p class="text-gray-500 text-xs mt-2 leading-relaxed">لعقود التصدير، الحاويات المبردة، وتوريد الكميات الكبيرة وتصنيع العلامات الخاصة (Private Label).</p>
+                            <p class="text-gray-500 text-xs mt-2 leading-relaxed">لعقود التصدير، الحاويات المبردة، وتوريد الكميات الكبيرة وتصنيع العلامات الخاصة.</p>
                         </div>
                         <div class="space-y-2 pt-2 border-t text-sm font-semibold text-gray-700">
                             <p class="flex items-center gap-2">
                                 <i class="fa-solid fa-phone text-primary text-xs"></i>
-                                <span dir="ltr">+20 100 000 0001</span>
+                                <span dir="ltr" id="export-phone">...</span>
                             </p>
                             <p class="flex items-center gap-2">
                                 <i class="fa-solid fa-envelope text-primary text-xs"></i>
-                                <span>export@goldenfries.com</span>
+                                <span id="export-email">...</span>
                             </p>
                         </div>
                     </div>
                     <div class="mt-6 flex flex-col gap-2">
-                        <a href="https://wa.me/201000000001" target="_blank" class="w-full bg-emerald-500 hover:bg-emerald-600 text-white py-2.5 rounded-xl font-bold text-sm text-center flex items-center justify-center gap-2 shadow-sm transition">
+                        <a id="export-whatsapp-btn" href="#" target="_blank" class="w-full bg-emerald-500 hover:bg-emerald-600 text-white py-2.5 rounded-xl font-bold text-sm text-center flex items-center justify-center gap-2 shadow-sm transition">
                             <i class="fa-brands fa-whatsapp text-lg"></i>
                             مراسلة واتساب فورية
                         </a>
-                        <a href="tel:+201000000001" class="w-full bg-gray-100 hover:bg-gray-200 text-dark py-2.5 rounded-xl font-bold text-xs text-center flex items-center justify-center gap-2 transition">
+                        <a id="export-call-btn" href="#" class="w-full bg-gray-100 hover:bg-gray-200 text-dark py-2.5 rounded-xl font-bold text-xs text-center flex items-center justify-center gap-2 transition">
                             <i class="fa-solid fa-phone"></i>
                             اتصال هاتفي
                         </a>
                     </div>
                 </div>
 
-                <!-- 2. المبيعات المحلية وقطاع المطاعم -->
+                <!-- 2. توريدات المطاعم والفنادق (HoReCa) -->
                 <div class="bg-white rounded-3xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 flex flex-col justify-between">
                     <div class="space-y-4">
                         <div class="w-14 h-14 bg-blue-500/10 text-blue-600 rounded-2xl flex items-center justify-center text-2xl font-bold">
@@ -305,20 +239,20 @@
                         <div class="space-y-2 pt-2 border-t text-sm font-semibold text-gray-700">
                             <p class="flex items-center gap-2">
                                 <i class="fa-solid fa-phone text-blue-500 text-xs"></i>
-                                <span dir="ltr">+20 100 000 0002</span>
+                                <span dir="ltr" id="horeca-phone">...</span>
                             </p>
                             <p class="flex items-center gap-2">
                                 <i class="fa-solid fa-envelope text-blue-500 text-xs"></i>
-                                <span>sales@goldenfries.com</span>
+                                <span id="horeca-email">...</span>
                             </p>
                         </div>
                     </div>
                     <div class="mt-6 flex flex-col gap-2">
-                        <a href="https://wa.me/201000000002" target="_blank" class="w-full bg-emerald-500 hover:bg-emerald-600 text-white py-2.5 rounded-xl font-bold text-sm text-center flex items-center justify-center gap-2 shadow-sm transition">
+                        <a id="horeca-whatsapp-btn" href="#" target="_blank" class="w-full bg-emerald-500 hover:bg-emerald-600 text-white py-2.5 rounded-xl font-bold text-sm text-center flex items-center justify-center gap-2 shadow-sm transition">
                             <i class="fa-brands fa-whatsapp text-lg"></i>
                             مراسلة واتساب فورية
                         </a>
-                        <a href="tel:+201000000002" class="w-full bg-gray-100 hover:bg-gray-200 text-dark py-2.5 rounded-xl font-bold text-xs text-center flex items-center justify-center gap-2 transition">
+                        <a id="horeca-call-btn" href="#" class="w-full bg-gray-100 hover:bg-gray-200 text-dark py-2.5 rounded-xl font-bold text-xs text-center flex items-center justify-center gap-2 transition">
                             <i class="fa-solid fa-phone"></i>
                             اتصال هاتفي
                         </a>
@@ -339,56 +273,26 @@
                         <div class="space-y-2 pt-2 border-t text-sm font-semibold text-gray-700">
                             <p class="flex items-start gap-2">
                                 <i class="fa-solid fa-location-dot text-emerald-500 text-xs mt-1"></i>
-                                <span>المنطقة الصناعية، القطعة رقم 12، جمهورية مصر العربية</span>
+                                <span id="company-address">...</span>
                             </p>
                             <p class="flex items-center gap-2">
                                 <i class="fa-solid fa-clock text-emerald-500 text-xs"></i>
-                                <span>السبت - الخميس (8 ص - 5 م)</span>
+                                <span id="company-hours">...</span>
                             </p>
                         </div>
                     </div>
                     <div class="mt-6">
-                        <a href="mailto:info@goldenfries.com" class="w-full bg-dark hover:bg-gray-800 text-white py-2.5 rounded-xl font-bold text-sm text-center flex items-center justify-center gap-2 shadow-sm transition">
+                        <a id="company-email-link" href="#" class="w-full bg-dark hover:bg-gray-800 text-white py-2.5 rounded-xl font-bold text-sm text-center flex items-center justify-center gap-2 shadow-sm transition">
                             <i class="fa-solid fa-envelope"></i>
                             مراسلة البريد الرسمي
                         </a>
                     </div>
                 </div>
             </div>
-
-            <!-- خريطة موقع المصنع -->
-            <div class="bg-white rounded-3xl p-4 md:p-6 shadow-sm border border-gray-100 mt-8">
-                <div class="flex flex-col sm:flex-row items-center justify-between gap-4 mb-5">
-                    <div class="flex items-center gap-3">
-                        <div class="w-11 h-11 rounded-2xl bg-red-50 text-red-500 flex items-center justify-center text-xl shrink-0">
-                            <i class="fa-solid fa-map-location-dot"></i>
-                        </div>
-                        <div>
-                            <h4 class="font-bold text-dark text-base">موقع المصنع وثلاجات التجميد</h4>
-                            <p class="text-xs text-gray-500">مدينة العاشر من رمضان — نرحب بزيارتكم ومعاينة خطوط الإنتاج بترتيب مسبق</p>
-                        </div>
-                    </div>
-                    <a href="https://www.google.com/maps?q=30.3155567,31.7795019" target="_blank" class="w-full sm:w-auto bg-gray-100 hover:bg-primary hover:text-white text-dark px-5 py-2.5 rounded-xl font-bold text-xs flex items-center justify-center gap-2 transition">
-                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                        فتح في Google Maps
-                    </a>
-                </div>
-
-                <div class="w-full h-80 md:h-96 rounded-2xl overflow-hidden border border-gray-200 shadow-inner">
-                    <iframe 
-                        src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d2025.7275227283583!2d31.779501907782638!3d30.31555671807699!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sen!2seg!4v1794147288601!5m2!1sen!2seg" 
-                        class="w-full h-full border-0" 
-                        allowfullscreen="" 
-                        loading="lazy" 
-                        referrerpolicy="strict-origin-when-cross-origin">
-                    </iframe>
-                </div>
-            </div>
-
         </div>
     </section>
 
-    <!-- الفوتر (Footer) -->
+    <!-- الفوتر -->
     <footer class="bg-dark text-gray-400 py-12 border-t border-gray-800 text-sm">
         <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
             <div class="space-y-4">
@@ -403,7 +307,6 @@
                 <ul class="space-y-2">
                     <li><a href="#about" class="hover:text-primary transition">عن المصنع والخطوط</a></li>
                     <li><a href="#products" class="hover:text-primary transition">مواصفات التقطيع</a></li>
-                    <li><a href="#quality" class="hover:text-primary transition">اعتمادات الجودة والتصدير</a></li>
                     <li><a href="#contact" class="hover:text-primary transition">طلب عينات وكتالوج</a></li>
                 </ul>
             </div>
@@ -412,15 +315,14 @@
                 <ul class="space-y-2">
                     <li>عبوات المطاعم والفنادق: 10 كجم (4 × 2.5)</li>
                     <li>عبوات التجزئة والسوبرماركت: 1 كجم</li>
-                    <li>عبوات السوبرماركت العائلية: 2.5 كجم</li>
                     <li>تعبئة بالعلامة الخاصة للمستورد</li>
                 </ul>
             </div>
             <div>
                 <h4 class="text-white font-bold mb-4">المقر والإدارة</h4>
-                <p class="mb-2"><i class="fa-solid fa-location-dot text-primary ml-2"></i> المنطقة الصناعية، مصر.</p>
-                <p class="mb-2"><i class="fa-solid fa-phone text-primary ml-2"></i> +20 100 000 0000</p>
-                <p><i class="fa-solid fa-envelope text-primary ml-2"></i> info@goldenfries.com</p>
+                <p class="mb-2"><i class="fa-solid fa-location-dot text-primary ml-2"></i> <span id="footer-address">...</span></p>
+                <p class="mb-2"><i class="fa-solid fa-phone text-primary ml-2"></i> <span id="footer-phone" dir="ltr">...</span></p>
+                <p><i class="fa-solid fa-envelope text-primary ml-2"></i> <span id="footer-email">...</span></p>
             </div>
         </div>
         <div class="container mx-auto px-4 border-t border-gray-800 pt-6 text-center text-xs text-gray-500">
@@ -428,75 +330,94 @@
         </div>
     </footer>
 
-    <!-- زر واتساب عائم -->
-    <a href="https://wa.me/201000000000" target="_blank" class="fixed bottom-6 left-6 bg-emerald-500 hover:bg-emerald-600 text-white w-14 h-14 rounded-full flex items-center justify-center text-2xl shadow-2xl transition transform hover:scale-110 z-50">
+    <!-- زر واتساب العائم -->
+    <a id="floating-whatsapp" href="#" target="_blank" class="fixed bottom-6 left-6 bg-emerald-500 hover:bg-emerald-600 text-white w-14 h-14 rounded-full flex items-center justify-center text-2xl shadow-2xl transition transform hover:scale-110 z-50">
         <i class="fa-brands fa-whatsapp"></i>
     </a>
 
-    <!-- كود الجافاسكريبت لجلب المنتجات والتحكم بالقوائم -->
+    <!-- كود الـ JavaScript الذي يملأ الموقع بالكامل من ملف الـ JSON -->
     <script>
-        // إظهار وإخفاء قائمة الهاتف
+        // تفعيل قائمة الهاتف
         const btn = document.getElementById('mobile-menu-btn');
         const menu = document.getElementById('mobile-menu');
-        btn.addEventListener('click', () => {
-            menu.classList.toggle('hidden');
-        });
-
-        // تحديث السنة في الفوتر تلقائياً
+        btn.addEventListener('click', () => menu.classList.toggle('hidden'));
         document.getElementById('year').textContent = new Date().getFullYear();
 
-        // -------------------------------------------------------------
-        // رابط الـ API المستقل الخاص بك على GitHub:
-        // -------------------------------------------------------------
+        // رابط الـ JSON على جيت هاب
         const API_URL = 'https://raw.githubusercontent.com/hamzawy-talha/data-api/main/data.json';
 
-        async function fetchProducts() {
-            const spinner = document.getElementById('loading-spinner');
-            const errorMsg = document.getElementById('error-message');
-            const container = document.getElementById('products-container');
-
+        async function initWebsiteData() {
             try {
                 const res = await fetch(API_URL);
+                if (!res.ok) throw new Error('فشل جلب البيانات: ' + res.status);
+                const data = await res.json();
 
-                if (!res.ok) {
-                    throw new Error(`تعذر الاتصال بالسيرفر: ${res.status}`);
-                }
+                // 1. البيانات العامة (Company Info)
+                document.getElementById('top-phone').innerText = data.company.phone;
+                document.getElementById('top-email').innerText = data.company.exportEmail;
+                document.getElementById('footer-phone').innerText = data.company.phone;
+                document.getElementById('footer-email').innerText = data.company.email;
+                document.getElementById('footer-address').innerText = data.company.address;
+                document.getElementById('company-address').innerText = data.company.address;
+                document.getElementById('company-hours').innerText = data.company.workingHours;
+                document.getElementById('company-email-link').href = `mailto:${data.company.email}`;
+                document.getElementById('floating-whatsapp').href = `https://wa.me/${data.company.mainWhatsapp}`;
 
-                const products = await res.json();
+                // 2. أقسام التواصل (Departments)
+                // قسم التصدير
+                document.getElementById('export-phone').innerText = data.contactDepartments.export.phone;
+                document.getElementById('export-email').innerText = data.contactDepartments.export.email;
+                document.getElementById('export-call-btn').href = `tel:${data.contactDepartments.export.phone}`;
+                document.getElementById('export-whatsapp-btn').href = `https://wa.me/${data.contactDepartments.export.whatsapp}`;
 
-                // إخفاء مؤشر التحميل
-                spinner.style.display = 'none';
+                // قسم المطاعم
+                document.getElementById('horeca-phone').innerText = data.contactDepartments.horeca.phone;
+                document.getElementById('horeca-email').innerText = data.contactDepartments.horeca.email;
+                document.getElementById('horeca-call-btn').href = `tel:${data.contactDepartments.horeca.phone}`;
+                document.getElementById('horeca-whatsapp-btn').href = `https://wa.me/${data.contactDepartments.horeca.whatsapp}`;
 
-                // رسم البطاقات ديناميكياً من بيانات الـ JSON
-                products.forEach(product => {
-                    const card = document.createElement('div');
-                    card.className = 'bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition duration-300 border border-gray-100 flex flex-col';
-                    card.innerHTML = `
-                        <img src="${product.image}" alt="${product.title}" class="h-48 w-full object-cover">
-                        <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
-                            <div>
-                                <span class="text-xs bg-amber-100 text-secondary font-bold px-2 py-1 rounded">${product.size}</span>
-                                <h3 class="text-xl font-bold text-dark mt-2">${product.title}</h3>
-                                <p class="text-gray-500 text-sm mt-1">${product.description}</p>
-                            </div>
-                            <div class="border-t pt-3 text-xs text-gray-500 flex justify-between">
-                                <span>${product.packaging}</span>
-                                <span>${product.validity}</span>
+                // 3. الإحصائيات (Stats)
+                const statsContainer = document.getElementById('stats-container');
+                statsContainer.innerHTML = '';
+                data.stats.forEach(stat => {
+                    statsContainer.innerHTML += `
+                        <div class="space-y-1">
+                            <p class="text-3xl lg:text-4xl font-extrabold text-primary">${stat.value}</p>
+                            <p class="text-sm text-gray-400">${stat.label}</p>
+                        </div>
+                    `;
+                });
+
+                // 4. المنتجات (Products)
+                document.getElementById('loading-spinner').style.display = 'none';
+                const productsContainer = document.getElementById('products-container');
+                productsContainer.innerHTML = '';
+                data.products.forEach(product => {
+                    productsContainer.innerHTML += `
+                        <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition duration-300 border border-gray-100 flex flex-col">
+                            <img src="${product.image}" alt="${product.title}" class="h-48 w-full object-cover">
+                            <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+                                <div>
+                                    <span class="text-xs bg-amber-100 text-secondary font-bold px-2 py-1 rounded">${product.size}</span>
+                                    <h3 class="text-xl font-bold text-dark mt-2">${product.title}</h3>
+                                    <p class="text-gray-500 text-sm mt-1">${product.description}</p>
+                                </div>
+                                <div class="border-t pt-3 text-xs text-gray-500 flex justify-between">
+                                    <span>${product.packaging}</span>
+                                    <span>${product.validity}</span>
+                                </div>
                             </div>
                         </div>
                     `;
-                    container.appendChild(card);
                 });
 
             } catch (err) {
-                console.error("خطأ أثناء جلب المنتجات:", err);
-                spinner.style.display = 'none';
-                errorMsg.classList.remove('hidden');
+                console.error("خطأ في جلب بيانات الموقع:", err);
             }
         }
 
-        // تشغيل الدالة فور فتح الصفحة
-        fetchProducts();
+        // تشغيل الجلب فوراً
+        initWebsiteData();
     </script>
 </body>
 </html>
